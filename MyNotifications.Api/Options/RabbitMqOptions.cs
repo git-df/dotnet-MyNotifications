@@ -1,4 +1,4 @@
-namespace MyNotifications.DiscordSender.Options;
+namespace MyNotifications.Api.Options;
 
 public class RabbitMqOptions
 {

@@ -1,8 +1,8 @@
 using MassTransit;
 using Microsoft.Extensions.Options;
-using MyNotifications.DiscordSender.Options;
+using MyNotifications.Api.Options;
 
-namespace MyNotifications.DiscordSender.Extensions;
+namespace MyNotifications.Api.Extensions;
 
 public static class MassTransitExtension
 {
