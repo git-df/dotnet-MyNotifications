@@ -1,5 +1,5 @@
 ﻿services:
-  my.notifications.rabbitmq:
+  mn.rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
     environment:
@@ -9,27 +9,27 @@
       - "5672:5672"
       - "15672:15672"
   
-  my.notifications.api:
-    image: my-notifications-api
+  mn.api:
+    image: mn-api
     container_name: 'api'
     build:
       context: .
       dockerfile: MyNotifications.Api/Dockerfile
     environment:
-      RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@my.notifications.rabbitmq:5672"
+      RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
     ports:
       - "8080:8080"
     depends_on:
-      - my.notifications.rabbitmq
+      - mn.rabbitmq
 
-  my.notifications.discord.sender:
-    image: my-notifications-discord-sender
-    container_name: 'discord_sender'
+  mn.sender:
+    image: mn-sender
+    container_name: 'sender'
     build:
       context: .
-      dockerfile: MyNotifications.DiscordSender/Dockerfile
+      dockerfile: MyNotifications.Sender/Dockerfile
     environment:
       DiscordOptions__WebhookUrl: ""
-      RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@my.notifications.rabbitmq:5672"
+      RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
     depends_on:
-      - my.notifications.rabbitmq
+      - mn.rabbitmq

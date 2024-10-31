@@ -1,6 +1,6 @@
 using MyNotifications.DomainModel.Events;
 
-namespace MyNotifications.DiscordSender.Interfaces;
+namespace MyNotifications.Sender.Interfaces;
 
 public interface IMessageProvider
 {

@@ -1,7 +1,7 @@
-using MyNotifications.DiscordSender.Interfaces;
 using MyNotifications.DomainModel.Events;
+using MyNotifications.Sender.Interfaces;
 
-namespace MyNotifications.DiscordSender.Providers;
+namespace MyNotifications.Sender.Providers;
 
 public class DatabaseMessageProvider : IMessageProvider
 {

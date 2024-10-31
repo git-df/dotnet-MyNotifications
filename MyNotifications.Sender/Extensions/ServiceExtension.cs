@@ -1,7 +1,7 @@
-using MyNotifications.DiscordSender.Interfaces;
-using MyNotifications.DiscordSender.Providers;
+using MyNotifications.Sender.Interfaces;
+using MyNotifications.Sender.Providers;
 
-namespace MyNotifications.DiscordSender.Extensions;
+namespace MyNotifications.Sender.Extensions;
 
 public static class ServiceExtension
 {

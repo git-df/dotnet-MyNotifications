@@ -1,4 +1,4 @@
-namespace MyNotifications.DiscordSender.Options;
+namespace MyNotifications.Sender.Options;
 
 public class DiscordOptions
 {

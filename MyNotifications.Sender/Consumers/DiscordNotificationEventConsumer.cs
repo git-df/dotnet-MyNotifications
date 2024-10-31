@@ -1,8 +1,8 @@
 using MassTransit;
-using MyNotifications.DiscordSender.Interfaces;
 using MyNotifications.DomainModel.Events;
+using MyNotifications.Sender.Interfaces;
 
-namespace MyNotifications.DiscordSender.Consumers;
+namespace MyNotifications.Sender.Consumers;
 
 public class DiscordNotificationEventConsumer : IConsumer<DiscordNotificationEvent>
 {

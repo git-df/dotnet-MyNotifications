@@ -1,4 +1,4 @@
-using MyNotifications.DiscordSender.Extensions;
+using MyNotifications.Sender.Extensions;
 
 var builder = Host.CreateApplicationBuilder(args);
 

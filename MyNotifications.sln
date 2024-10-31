@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ABC4B2EE-5E66-4613-B9B3-77CA2A5F06FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotifications.DiscordSender", "MyNotifications.DiscordSender\MyNotifications.DiscordSender.csproj", "{F5254B7E-A707-4BAA-9AB3-880ED177C1EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotifications.Sender", "MyNotifications.Sender\MyNotifications.Sender.csproj", "{F5254B7E-A707-4BAA-9AB3-880ED177C1EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotifications.DomainModel", "MyNotifications.DomainModel\MyNotifications.DomainModel.csproj", "{1993FFF8-9FF9-417D-A407-83BE26F8A08F}"
 EndProject

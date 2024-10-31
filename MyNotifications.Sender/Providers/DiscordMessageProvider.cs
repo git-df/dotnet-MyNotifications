@@ -1,12 +1,12 @@
 using System.Text;
 using Microsoft.Extensions.Options;
-using MyNotifications.DiscordSender.Interfaces;
-using MyNotifications.DiscordSender.Models;
-using MyNotifications.DiscordSender.Options;
 using MyNotifications.DomainModel.Events;
+using MyNotifications.Sender.Interfaces;
+using MyNotifications.Sender.Models;
+using MyNotifications.Sender.Options;
 using Newtonsoft.Json;
 
-namespace MyNotifications.DiscordSender.Providers;
+namespace MyNotifications.Sender.Providers;
 
 public class DiscordMessageProvider : IMessageProvider
 {

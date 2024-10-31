@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace MyNotifications.DiscordSender.Models;
+namespace MyNotifications.Sender.Models;
 
 public class WebhookRequest
 {
