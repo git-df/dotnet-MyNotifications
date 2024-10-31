@@ -30,7 +30,6 @@
       dockerfile: MyNotifications.DiscordSender/Dockerfile
     environment:
       DiscordOptions__WebhookUrl: ""
-      DiscordOptions__Username: "mynotifications"
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mynotifications.rabbitmq:5672"
     depends_on:
       - mynotifications.rabbitmq

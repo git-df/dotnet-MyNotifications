@@ -6,33 +6,33 @@ using MyNotifications.DiscordSender.Options;
 using MyNotifications.DomainModel.Events;
 using Newtonsoft.Json;
 
-namespace MyNotifications.DiscordSender.Services;
+namespace MyNotifications.DiscordSender.Providers;
 
-public class DiscordService : IDiscordService
+public class DiscordMessageProvider : IMessageProvider
 {
     private readonly DiscordOptions _discordOptions;
     private const string MediaType = "application/json";
 
-    public DiscordService(IOptions<DiscordOptions> discordOptions)
+    public DiscordMessageProvider(IOptions<DiscordOptions> discordOptions)
     {
         _discordOptions = discordOptions.Value ?? throw new ArgumentNullException(nameof(discordOptions));
     }
     
-    public async Task SendWebhookMessage(DiscordNotificationEvent notification, CancellationToken ct = default)
+    public async Task Execute(DiscordNotificationEvent message, CancellationToken ct = default)
     {
-        if (!ValidateNotification(notification))
+        if (!ValidateNotification(message))
         {
             return;
         }
         
-        var request = GetWebhookRequest(notification, _discordOptions);
+        var request = GetWebhookRequest(message, _discordOptions);
         var jsonRequest = JsonConvert.SerializeObject(request);
         var stringContent = new StringContent(jsonRequest, Encoding.UTF8, MediaType);
 
         using HttpClient client = new HttpClient();
         await client.PostAsync(_discordOptions.WebhookUrl, stringContent, ct);
     }
-
+    
     private static bool ValidateNotification(DiscordNotificationEvent notification)
     {
         return !string.IsNullOrWhiteSpace(notification.Content);
@@ -43,7 +43,7 @@ public class DiscordService : IDiscordService
         return new WebhookRequest
         {
             Content = notification.Content,
-            Username = discordOptions.Username
+            Username = notification.Name ?? nameof(MyNotifications),
         };
     }
 }
