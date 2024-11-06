@@ -32,6 +32,7 @@
       dockerfile: MyNotifications.Api/Dockerfile
     environment:
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
+      ConnectionStrings__DefaultConnection: ""
     ports:
       - "8080:8080"
     depends_on:
@@ -47,6 +48,7 @@
     environment:
       DiscordOptions__WebhookUrl: ""
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
+      ConnectionStrings__DefaultConnection: ""
     depends_on:
       - mn.rabbitmq
       - mn.database

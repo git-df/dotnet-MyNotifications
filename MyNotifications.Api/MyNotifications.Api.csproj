@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MyNotifications.Database\MyNotifications.Database.csproj" />
       <ProjectReference Include="..\MyNotifications.DomainModel\MyNotifications.DomainModel.csproj" />
     </ItemGroup>
 
