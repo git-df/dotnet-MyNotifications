@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace MyNotifications.Sender.Models;
+namespace MyNotifications.DomainModel.Models;
 
 public class WebhookRequest
 {

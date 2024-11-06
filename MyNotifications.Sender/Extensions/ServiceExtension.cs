@@ -1,5 +1,6 @@
 using MyNotifications.Sender.Interfaces;
-using MyNotifications.Sender.Providers;
+using MyNotifications.Sender.Repositories;
+using MyNotifications.Sender.Services;
 
 namespace MyNotifications.Sender.Extensions;
 
@@ -7,7 +8,7 @@ public static class ServiceExtension
 {
     public static void AddServices(this IServiceCollection services)
     {
-        services.AddScoped<IMessageProvider, DiscordMessageProvider>();
-        services.AddScoped<IMessageProvider, DatabaseMessageProvider>();
+        services.AddScoped<IDiscordRepository, DiscordRepository>();
+        services.AddScoped<INotificationsService, NotificationsService>();
     }
 }

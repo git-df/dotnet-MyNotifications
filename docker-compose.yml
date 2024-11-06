@@ -8,6 +8,21 @@
     ports:
       - "5672:5672"
       - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_log:/var/log/rabbitmq
+
+  mn.database:
+    image: postgres:latest
+    container_name: 'database'
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mn_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   
   mn.api:
     image: mn-api
@@ -21,6 +36,7 @@
       - "8080:8080"
     depends_on:
       - mn.rabbitmq
+      - mn.database
 
   mn.sender:
     image: mn-sender
@@ -33,3 +49,9 @@
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
     depends_on:
       - mn.rabbitmq
+      - mn.database
+        
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  rabbitmq_log:

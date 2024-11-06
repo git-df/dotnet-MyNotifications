@@ -6,18 +6,13 @@ namespace MyNotifications.Sender.Consumers;
 
 public class DiscordNotificationEventConsumer : IConsumer<DiscordNotificationEvent>
 {
-    private readonly IEnumerable<IMessageProvider> _messageProviders;
+    private readonly INotificationsService _notificationsService;
 
-    public DiscordNotificationEventConsumer(IEnumerable<IMessageProvider> messageProviders)
+    public DiscordNotificationEventConsumer(INotificationsService notificationsService)
     {
-        _messageProviders = messageProviders;
+        _notificationsService = notificationsService;
     }
 
     public async Task Consume(ConsumeContext<DiscordNotificationEvent> context)
-    {
-        var messageProvidersTasks = _messageProviders
-            .Select(x => x.Execute(context.Message));
-        
-        await Task.WhenAll(messageProvidersTasks);
-    }
+        => await _notificationsService.ProcessNotificationEvent(context.Message, CancellationToken.None);
 }

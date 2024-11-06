@@ -1,21 +1,25 @@
 using FastEndpoints;
 using MyNotifications.DomainModel.Events;
+using MyNotifications.DomainModel.Models;
 
 namespace MyNotifications.Api.Endpoints.SendNotification;
 
-public class SendNotificationEndpoint : Endpoint<DiscordNotificationEvent>
+public class SendNotificationEndpoint : Endpoint<SendNotificationRequest>
 {
-    private const string Message = "Notification created";
-    
     public override void Configure()
     {
         Post("notifications");
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(DiscordNotificationEvent req, CancellationToken ct)
+    public override async Task HandleAsync(SendNotificationRequest req, CancellationToken ct)
     {
-        await PublishAsync(req, Mode.WaitForNone, ct);
-        await SendAsync(Message, StatusCodes.Status201Created, ct);
+        var id = Guid.NewGuid();
+        
+        await PublishAsync(new DiscordNotificationEvent(id, req.Request), Mode.WaitForNone, ct);
+        await SendAsync(id, StatusCodes.Status201Created, ct);
     }
 }
+
+public record SendNotificationRequest(
+    WebhookRequest Request);
