@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotifications.Database", "MyNotifications.Database\MyNotifications.Database.csproj", "{7B1A7DBC-8864-44E8-9C0C-A2ADAF49D54B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotifications.Database.Migrator", "MyNotifications.Database.Migrator\MyNotifications.Database.Migrator.csproj", "{086CA8EC-D5D9-4897-A6C7-3046D35935C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,7 @@ Global
 		{1993FFF8-9FF9-417D-A407-83BE26F8A08F} = {ABC4B2EE-5E66-4613-B9B3-77CA2A5F06FE}
 		{22D763E1-1E83-43CB-88D8-3DD962711602} = {ABC4B2EE-5E66-4613-B9B3-77CA2A5F06FE}
 		{7B1A7DBC-8864-44E8-9C0C-A2ADAF49D54B} = {ABC4B2EE-5E66-4613-B9B3-77CA2A5F06FE}
+		{086CA8EC-D5D9-4897-A6C7-3046D35935C4} = {ABC4B2EE-5E66-4613-B9B3-77CA2A5F06FE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F5254B7E-A707-4BAA-9AB3-880ED177C1EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,5 +46,9 @@ Global
 		{7B1A7DBC-8864-44E8-9C0C-A2ADAF49D54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1A7DBC-8864-44E8-9C0C-A2ADAF49D54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1A7DBC-8864-44E8-9C0C-A2ADAF49D54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086CA8EC-D5D9-4897-A6C7-3046D35935C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086CA8EC-D5D9-4897-A6C7-3046D35935C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086CA8EC-D5D9-4897-A6C7-3046D35935C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086CA8EC-D5D9-4897-A6C7-3046D35935C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

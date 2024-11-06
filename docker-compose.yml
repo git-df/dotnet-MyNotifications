@@ -23,6 +23,17 @@
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  mn.database.migrator:
+    image: mn-database-migrator
+    container_name: 'migrator'
+    build:
+      context: .
+      dockerfile: MyNotifications.Database.Migrator/Dockerfile
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
+    depends_on:
+      - mn.database
   
   mn.api:
     image: mn-api
@@ -32,7 +43,7 @@
       dockerfile: MyNotifications.Api/Dockerfile
     environment:
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
-      ConnectionStrings__DefaultConnection: ""
+      ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
     ports:
       - "8080:8080"
     depends_on:
@@ -48,7 +59,7 @@
     environment:
       DiscordOptions__WebhookUrl: ""
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
-      ConnectionStrings__DefaultConnection: ""
+      ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
     depends_on:
       - mn.rabbitmq
       - mn.database

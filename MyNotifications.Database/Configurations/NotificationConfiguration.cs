@@ -9,9 +9,6 @@ public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
     public void Configure(EntityTypeBuilder<Notification> builder)
     {
         builder.HasKey(x => x.Id);
-
-        builder.Property(x => x.Id)
-            .ValueGeneratedOnAddOrUpdate();
         
         builder.Property(x => x.Content)
             .IsRequired();
