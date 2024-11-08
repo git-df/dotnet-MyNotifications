@@ -29,7 +29,7 @@
     container_name: 'migrator'
     build:
       context: .
-      dockerfile: MyNotifications.Database.Migrator/Dockerfile
+      dockerfile: src/MyNotifications.Database.Migrator/Dockerfile
     environment:
       ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
     depends_on:
@@ -40,7 +40,7 @@
     container_name: 'api'
     build:
       context: .
-      dockerfile: MyNotifications.Api/Dockerfile
+      dockerfile: src/MyNotifications.Api/Dockerfile
     environment:
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
       ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
@@ -55,9 +55,9 @@
     container_name: 'sender'
     build:
       context: .
-      dockerfile: MyNotifications.Sender/Dockerfile
+      dockerfile: src/MyNotifications.Sender/Dockerfile
     environment:
-      DiscordOptions__WebhookUrl: ""
+      DiscordOptions__WebhookUrl: "https://discord.com/api/webhooks/1297977254982320129/0WaKVdGjjtEWsudVtZKIZuWBR2YicGlNUCTJggFajamob4riIwNrZ-ME4F05TY9bOyI_"
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
       ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
     depends_on:
