@@ -19,6 +19,7 @@ public class SendNotificationEndpoint : Endpoint<SendNotificationRequest>
     public override void Configure()
     {
         Post("notifications");
+        Validator<SendNotificationValidator>();
         AllowAnonymous();
     }
 

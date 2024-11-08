@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using MyNotifications.Database;
 using MyNotifications.DomainModel.Entities;
 using MyNotifications.DomainModel.Events;
+using MyNotifications.DomainModel.Validators;
+using MyNotifications.Sender.Extensions;
 using MyNotifications.Sender.Interfaces;
 using Newtonsoft.Json;
 
@@ -20,6 +22,9 @@ public class NotificationsService : INotificationsService
     
     public async Task ProcessNotificationEvent(DiscordNotificationEvent notificationEvent, CancellationToken ct = default)
     {
+        if (!notificationEvent.IsValid<DiscordNotificationEvent, DiscordNotificationEventValidator>())
+            return;
+        
         var notification = await _context.Notifications
             .FirstOrDefaultAsync(x => x.Id == notificationEvent.Id, ct);
         

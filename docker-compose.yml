@@ -57,7 +57,7 @@
       context: .
       dockerfile: src/MyNotifications.Sender/Dockerfile
     environment:
-      DiscordOptions__WebhookUrl: "https://discord.com/api/webhooks/1297977254982320129/0WaKVdGjjtEWsudVtZKIZuWBR2YicGlNUCTJggFajamob4riIwNrZ-ME4F05TY9bOyI_"
+      DiscordOptions__WebhookUrl: ""
       RabbitMqOptions__HostUri: "amqp://rabbitmq:rabbitmq@mn.rabbitmq:5672"
       ConnectionStrings__DefaultConnection: "Host=mn.database;Port=5432;Database=mn_database;Username=user;Password=password"
     depends_on:

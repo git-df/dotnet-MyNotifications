@@ -11,7 +11,7 @@ public class WebhookRequest
     public string? AvatarUrl { get; set; }
 
     [JsonProperty("content")]
-    public required string Content { get; set; }
+    public string? Content { get; set; }
 
     [JsonProperty("embeds")]
     public ICollection<Embed>? Embeds { get; set; }
