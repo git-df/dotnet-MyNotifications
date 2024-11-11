@@ -5,10 +5,11 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MyNotifications.Sender/MyNotifications.Sender.csproj", "MyNotifications.Sender/"]
-COPY ["MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
+COPY ["src/MyNotifications.Sender/MyNotifications.Sender.csproj", "MyNotifications.Sender/"]
+COPY ["src/MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
+COPY ["src/MyNotifications.Database/MyNotifications.Database.csproj", "MyNotifications.Database/"]
 RUN dotnet restore "MyNotifications.Sender/MyNotifications.Sender.csproj"
-COPY . .
+COPY src/ ./
 WORKDIR "/src/MyNotifications.Sender"
 RUN dotnet build "MyNotifications.Sender.csproj" -c $BUILD_CONFIGURATION -o /app/build
 

@@ -7,10 +7,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MyNotifications.Api/MyNotifications.Api.csproj", "MyNotifications.Api/"]
-COPY ["MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
+COPY ["src/MyNotifications.Api/MyNotifications.Api.csproj", "MyNotifications.Api/"]
+COPY ["src/MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
+COPY ["src/MyNotifications.Database/MyNotifications.Database.csproj", "MyNotifications.Database/"]
 RUN dotnet restore "MyNotifications.Api/MyNotifications.Api.csproj"
-COPY . .
+COPY src/ ./
 WORKDIR "/src/MyNotifications.Api"
 RUN dotnet build "MyNotifications.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 

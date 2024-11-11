@@ -5,11 +5,11 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MyNotifications.Database.Migrator/MyNotifications.Database.Migrator.csproj", "MyNotifications.Database.Migrator/"]
-COPY ["MyNotifications.Database/MyNotifications.Database.csproj", "MyNotifications.Database/"]
-COPY ["MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
+COPY ["src/MyNotifications.Database.Migrator/MyNotifications.Database.Migrator.csproj", "MyNotifications.Database.Migrator/"]
+COPY ["src/MyNotifications.Database/MyNotifications.Database.csproj", "MyNotifications.Database/"]
+COPY ["src/MyNotifications.DomainModel/MyNotifications.DomainModel.csproj", "MyNotifications.DomainModel/"]
 RUN dotnet restore "MyNotifications.Database.Migrator/MyNotifications.Database.Migrator.csproj"
-COPY . .
+COPY src/ ./
 WORKDIR "/src/MyNotifications.Database.Migrator"
 RUN dotnet build "MyNotifications.Database.Migrator.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
