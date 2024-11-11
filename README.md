@@ -36,3 +36,6 @@ cd dotnet-MyNotifications
 ```bash
 docker-compose up --build -d
 ```
+## C4 Diagram
+
+![DailyDishService_job](https://dawidflorian.pl/file/MyNotification/C4.png)
