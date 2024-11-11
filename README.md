@@ -3,8 +3,7 @@
 ## Getting Started
 
 ### Prerequisites
-- .NET Core SDK 8
-- Docker
+- Docker and Docker Compose installed on your machine.
 
 ### Installation
 
